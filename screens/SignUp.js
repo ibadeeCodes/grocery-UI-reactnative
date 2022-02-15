@@ -13,7 +13,7 @@ import {
 import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../constants';
 import {PriceAlert, NoticeAlert, TransactionHistory} from '../components';
 
-const Home = () => {
+const SignUp = () => {
   return (
     <View>
       <Text>hi</Text>
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default SignUp;
