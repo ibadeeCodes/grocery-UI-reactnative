@@ -60,7 +60,7 @@ const Welcome = ({navigation}) => {
           <Text
             style={{
               color: COLORS.secondary,
-              textDecorationStyle: 'dashed',
+              textDecorationLine: 'underline',
               textShadowColor: COLORS.secondary,
               ...FONTS.body4,
             }}>
