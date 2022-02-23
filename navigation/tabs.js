@@ -6,29 +6,11 @@ import {
 } from '@react-navigation/bottom-tabs';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {Home, Transaction} from '../screens';
-import {COLORS, FONTS, icons} from '../constants';
+import {Home, Profile} from '../screens';
+import {COLORS, FONTS, icons, SIZES} from '../constants';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const Tab = createBottomTabNavigator();
-
-const TabBarCustomButton = ({children, onPress, ...props}) => {
-  return (
-    <TouchableOpacity
-      style={{
-        top: -25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        ...styles.shadow,
-      }}
-      onPress={onPress}>
-      <LinearGradient
-        colors={[COLORS.primary, COLORS.secondary]}
-        style={{width: 70, height: 70, borderRadius: 35}}>
-        {children}
-      </LinearGradient>
-    </TouchableOpacity>
-  );
-};
 
 const Tabs = () => {
   return (
@@ -43,7 +25,10 @@ const Tabs = () => {
           elevation: 0,
           backgroundColor: COLORS.white,
           borderTopColor: 'transparent',
-          height: 70,
+          height: 60,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          ...styles.shadow,
         },
       }}>
       <Tab.Screen
@@ -52,21 +37,17 @@ const Tabs = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <Image
-                source={icons.home}
-                resizeMode="contain"
-                style={{
-                  height: 25,
-                  width: 25,
-                  tintColor: focused ? COLORS.primary : COLORS.black,
-                }}
+              <Icon
+                name="home"
+                size={25}
+                color={focused ? COLORS.secondary : '#d6d6d6'}
               />
               <Text
                 style={{
-                  color: focused ? COLORS.primary : COLORS.black,
+                  color: focused ? COLORS.secondary : '#d6d6d6',
                   ...FONTS.body5,
                 }}>
-                HOME
+                Home
               </Text>
             </View>
           ),
@@ -78,27 +59,23 @@ const Tabs = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <Image
-                source={icons.pie_chart}
-                resizeMode="contain"
-                style={{
-                  height: 25,
-                  width: 25,
-                  tintColor: focused ? COLORS.primary : COLORS.black,
-                }}
+              <Icon
+                name="search1"
+                size={25}
+                color={focused ? COLORS.secondary : '#d6d6d6'}
               />
               <Text
                 style={{
-                  color: focused ? COLORS.primary : COLORS.black,
+                  color: focused ? COLORS.secondary : '#d6d6d6',
                   ...FONTS.body5,
                 }}>
-                PORTFOLIO
+                Search
               </Text>
             </View>
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Transaction"
         component={Home}
         options={{
@@ -115,7 +92,7 @@ const Tabs = () => {
           ),
           tabBarButton: props => <TabBarCustomButton {...props} />,
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Prices"
         component={Home}
@@ -126,21 +103,17 @@ const Tabs = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Image
-                source={icons.line_graph}
-                resizeMode="contain"
-                style={{
-                  height: 25,
-                  width: 25,
-                  tintColor: focused ? COLORS.primary : COLORS.black,
-                }}
+              <Icon
+                name="shoppingcart"
+                size={25}
+                color={focused ? COLORS.secondary : '#d6d6d6'}
               />
               <Text
                 style={{
-                  color: focused ? COLORS.primary : COLORS.black,
+                  color: focused ? COLORS.secondary : '#d6d6d6',
                   ...FONTS.body5,
                 }}>
-                PRICES
+                Cart
               </Text>
             </View>
           ),
@@ -148,25 +121,21 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Settings"
-        component={Home}
+        component={Profile}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-              <Image
-                source={icons.settings}
-                resizeMode="contain"
-                style={{
-                  height: 25,
-                  width: 25,
-                  tintColor: focused ? COLORS.primary : COLORS.black,
-                }}
+              <Icon
+                name="user"
+                size={25}
+                color={focused ? COLORS.secondary : '#d6d6d6'}
               />
               <Text
                 style={{
-                  color: focused ? COLORS.primary : COLORS.black,
+                  color: focused ? COLORS.secondary : '#d6d6d6',
                   ...FONTS.body5,
                 }}>
-                SETTINGS
+                Profile
               </Text>
             </View>
           ),
@@ -178,7 +147,7 @@ const Tabs = () => {
 
 const styles = StyleSheet.create({
   shadow: {
-    shadowColor: COLORS.primary,
+    shadowColor: COLORS.tertiary,
     shadowOffset: {
       width: 0,
       height: 10,

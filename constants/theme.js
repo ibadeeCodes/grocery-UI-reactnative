@@ -13,6 +13,8 @@ export const COLORS = {
   gray: '#6A6A6A',
   lightGray: '#dbdbdb',
   lightGray1: '#f5f6fa',
+  bgGrey: '#f7f7f7',
+  iconGrey: '#e5e5e5',
 };
 export const SIZES = {
   // global sizes

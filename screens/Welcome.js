@@ -47,7 +47,7 @@ const Welcome = ({navigation}) => {
         <TextButton
           label="Get Started"
           customButtonStyle={{height: 48, marginHorizontal: 20}}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('SignUp')}
         />
         <Text
           style={{
@@ -63,7 +63,8 @@ const Welcome = ({navigation}) => {
               textDecorationLine: 'underline',
               textShadowColor: COLORS.secondary,
               ...FONTS.body4,
-            }}>
+            }}
+            onPress={() => navigation.navigate('SignIn')}>
             Sign In
           </Text>
         </Text>

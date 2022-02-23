@@ -77,7 +77,7 @@ const SignIn = ({navigation}) => {
         <TextButton
           label="Sign In"
           customButtonStyle={{height: 48, marginHorizontal: 20}}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('Home')}
         />
         <Text
           style={{

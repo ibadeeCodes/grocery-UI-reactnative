@@ -78,23 +78,13 @@ const SignUp = ({navigation}) => {
               secureTextEntry={true}
               placeHolder={'Re-enter your password.'}
             />
-            <TouchableOpacity>
-              <Text
-                style={{
-                  color: COLORS.tertiary,
-                  fontWeight: 'bold',
-                  textDecorationLine: 'underline',
-                }}>
-                Forgot Password?
-              </Text>
-            </TouchableOpacity>
           </View>
         </View>
         <View style={{paddingVertical: 30}}>
           <TextButton
             label="Register"
             customButtonStyle={{height: 48, marginHorizontal: 20}}
-            onPress={() => navigation.navigate('SignIn')}
+            onPress={() => navigation.navigate('Home')}
           />
           <Text
             style={{
@@ -103,15 +93,16 @@ const SignUp = ({navigation}) => {
               textAlign: 'center',
               paddingTop: SIZES.base,
             }}>
-            Don't have an account?
+            Already have an account?{' '}
             <Text
               style={{
                 color: COLORS.secondary,
                 textDecorationLine: 'underline',
                 textShadowColor: COLORS.secondary,
                 ...FONTS.body4,
-              }}>
-              Register
+              }}
+              onPress={() => navigation.navigate('SignIn')}>
+              Sign In
             </Text>
           </Text>
         </View>
