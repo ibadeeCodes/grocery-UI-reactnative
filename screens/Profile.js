@@ -1,19 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   ScrollView,
-  ImageBackground,
   Image,
-  FlatList,
-  LogBox,
-  Button,
-  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../constants';
+import {COLORS, dummyData, FONTS, images, SIZES} from '../constants';
 
 const Profile = () => {
   const renderHeader = () => {
@@ -21,12 +16,15 @@ const Profile = () => {
       <View
         style={{
           width: '100%',
-          height: 150,
+          height: 130,
           ...styles.shadow,
         }}>
-        <ImageBackground
-          source={images.profileBg}
-          style={{flex: 1, justifyContent: 'center'}}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: COLORS.secondary,
+          }}>
           <View
             style={{
               marginHorizontal: SIZES.body3,
@@ -39,23 +37,60 @@ const Profile = () => {
               />
               <Text
                 style={{
-                  fontSize: SIZES.h1,
+                  ...FONTS.h1,
+                  fontFamily: 'Roboto-Medium',
                   color: COLORS.white,
                   marginLeft: SIZES.base,
-                  fontWeight: 'bold',
                 }}>
                 John Doe
               </Text>
             </View>
           </View>
-        </ImageBackground>
+        </View>
       </View>
     );
   };
 
-  const renderListItems = () => {};
+  const renderOptions = () => {
+    return (
+      <ScrollView>
+        <View
+          style={{
+            marginHorizontal: SIZES.body3,
+            marginVertical: SIZES.base,
+          }}>
+          {dummyData.profileOptions.map(item => (
+            <TouchableOpacity
+              key={item.id}
+              style={{
+                flexDirection: 'row',
+                marginVertical: SIZES.base,
+                backgroundColor: COLORS.white,
+                padding: SIZES.body4,
+                alignItems: 'center',
+                borderRadius: SIZES.base - 4,
+                ...styles.shadow,
+              }}>
+              <Icon name={item.icon} size={20} color={COLORS.tertiary} />
+              <Text style={{marginLeft: SIZES.body4, color: COLORS.tertiary}}>
+                {item.name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+          <Text style={{textAlign: 'center', color: COLORS.lightGray}}>
+            Version 1.0.2
+          </Text>
+        </View>
+      </ScrollView>
+    );
+  };
 
-  return <View>{renderHeader()}</View>;
+  return (
+    <View style={styles.container}>
+      {renderHeader()}
+      {renderOptions()}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -67,11 +102,11 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 0,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-    elevation: 5,
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 3,
   },
 });
 

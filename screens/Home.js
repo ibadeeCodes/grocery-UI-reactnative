@@ -145,7 +145,7 @@ const Home = () => {
             style={{
               fontSize: SIZES.h2,
               color: COLORS.tertiary,
-              fontWeight: 'bold',
+              fontFamily: 'Roboto-Medium',
             }}>
             Categories
           </Text>
@@ -231,7 +231,7 @@ const Home = () => {
             style={{
               fontSize: SIZES.h2,
               color: COLORS.tertiary,
-              fontWeight: 'bold',
+              fontFamily: 'Roboto-Medium',
             }}>
             Best Seller
           </Text>

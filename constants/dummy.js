@@ -106,9 +106,43 @@ export const bestSeller = [
   },
 ];
 
+const profileOptions = [
+  {
+    id: 1,
+    icon: 'edit',
+    name: 'Edit Profile',
+  },
+  {
+    id: 2,
+    icon: 'hearto',
+    name: 'Wishlist',
+  },
+  {
+    id: 3,
+    icon: 'home',
+    name: 'Address List',
+  },
+  {
+    id: 4,
+    icon: 'tago',
+    name: 'Coupon',
+  },
+  {
+    id: 5,
+    icon: 'setting',
+    name: 'Settings',
+  },
+  {
+    id: 6,
+    icon: 'logout',
+    name: 'Logout',
+  },
+];
+
 const dummyData = {
   categories,
   bestSeller,
+  profileOptions,
 };
 
 export default dummyData;
