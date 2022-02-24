@@ -16,13 +16,36 @@ import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Home = () => {
+  const renderGreeting = () => {
+    return (
+      <View
+        style={{
+          paddingVertical: SIZES.base + 4,
+          marginHorizontal: SIZES.body3,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <Image source={images.wavingHand} style={{height: 30, width: 30}} />
+        <Text
+          style={{
+            fontSize: SIZES.h2,
+            color: COLORS.tertiary,
+            fontFamily: 'Roboto-Bold',
+            marginLeft: SIZES.base - 3,
+          }}>
+          Hello, John
+        </Text>
+      </View>
+    );
+  };
+
   const renderDiscountBanner = () => {
     return (
       <View
         style={{
           height: 120,
           marginHorizontal: SIZES.body3,
-          marginTop: SIZES.h3,
+          marginTop: SIZES.h5,
           borderRadius: SIZES.base,
           overflow: 'hidden',
           ...styles.shadow,
@@ -252,6 +275,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+      {renderGreeting()}
       <ScrollView>
         {renderDiscountBanner()}
         {renderLocationBar()}

@@ -1,13 +1,9 @@
 import React from 'react';
-import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
-import {
-  createBottomTabNavigator,
-  BottomTabBar,
-} from '@react-navigation/bottom-tabs';
-import LinearGradient from 'react-native-linear-gradient';
+import {View, Text, StyleSheet} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Home, Profile} from '../screens';
-import {COLORS, FONTS, icons, SIZES} from '../constants';
+import {Home, Profile, Cart, Search} from '../screens';
+import {COLORS, FONTS} from '../constants';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const Tab = createBottomTabNavigator();
@@ -55,7 +51,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Portfolio"
-        component={Home}
+        component={Search}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -75,27 +71,10 @@ const Tabs = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
-        name="Transaction"
-        component={Home}
-        options={{
-          tabBarIcon: ({focused}) => (
-            <Image
-              source={icons.transaction}
-              resizeMode="contain"
-              style={{
-                height: 25,
-                width: 25,
-                tintColor: COLORS.white,
-              }}
-            />
-          ),
-          tabBarButton: props => <TabBarCustomButton {...props} />,
-        }}
-      /> */}
+
       <Tab.Screen
         name="Prices"
-        component={Home}
+        component={Cart}
         options={{
           tabBarIcon: ({focused}) => (
             <View

@@ -139,10 +139,56 @@ const profileOptions = [
   },
 ];
 
+const cartItemData = [
+  {
+    id: 1,
+    image: require('../assets/images/bestseller/pineapple.jpg'),
+    name: 'Pineapple',
+    price: 100,
+    weight: 1,
+  },
+  {
+    id: 2,
+    image: require('../assets/images/bestseller/rasberry.jpg'),
+    name: 'Rasberry',
+    price: 200,
+    weight: 3,
+  },
+  {
+    id: 3,
+    image: require('../assets/images/bestseller/apple.jpg'),
+    name: 'Apple',
+    price: 400,
+    weight: 1,
+  },
+  {
+    id: 4,
+    image: require('../assets/images/bestseller/banana.jpg'),
+    name: 'Banana',
+    price: 40,
+    weight: 2,
+  },
+  {
+    id: 5,
+    image: require('../assets/images/bestseller/mango.jpg'),
+    name: 'Mango',
+    price: 200,
+    weight: 1.5,
+  },
+  {
+    id: 6,
+    image: require('../assets/images/bestseller/orange.jpg'),
+    name: 'Orange',
+    price: 90,
+    weight: 5,
+  },
+];
+
 const dummyData = {
   categories,
   bestSeller,
   profileOptions,
+  cartItemData,
 };
 
 export default dummyData;

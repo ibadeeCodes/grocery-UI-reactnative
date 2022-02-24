@@ -8,6 +8,8 @@ const discountBanner = require('../assets/images/discount-banner.jpg');
 const signin = require('../assets/images/signin.jpg');
 const avatar = require('../assets/images/avatar.jpg');
 const profileBg = require('../assets/images/profile-background.jpg');
+const wavingHand = require('../assets/images/waving-hand.png');
+const shoppingCart = require('../assets/images/shopping-cart.png');
 
 export default {
   banner,
@@ -20,4 +22,6 @@ export default {
   discountBanner,
   avatar,
   profileBg,
+  wavingHand,
+  shoppingCart,
 };
