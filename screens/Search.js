@@ -13,8 +13,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../constants';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {CustomInput} from '../components';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {CustomInput, SearchBar} from '../components';
 import {useKeyboard} from '../hooks';
 
 const Search = () => {
@@ -23,23 +23,24 @@ const Search = () => {
     'Wheat',
     'apple',
     'Ban',
+    'l',
     'Fruit',
     'Cherry',
     'Pineapple',
-    'Pine',
-    'Cheese',
   ];
+
+  const [showSearchHistory, setShowSearchHistory] = useState(true);
 
   const renderGreeting = () => {
     return (
       <View
         style={{
-          paddingVertical: SIZES.base + 4,
+          paddingVertical: SIZES.base + 2,
           marginHorizontal: SIZES.body3,
           flexDirection: 'row',
           alignItems: 'center',
         }}>
-        <Image source={images.wavingHand} style={{height: 30, width: 30}} />
+        <Image source={images.search} style={{height: 30, width: 30}} />
         <Text
           style={{
             fontSize: SIZES.h2,
@@ -49,33 +50,6 @@ const Search = () => {
           }}>
           Search
         </Text>
-      </View>
-    );
-  };
-
-  const renderCategoryItem = ({item, index}) => {
-    return (
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: COLORS.secondary,
-          padding: SIZES.base,
-          paddingHorizontal: SIZES.body4,
-          borderRadius: 5,
-        }}>
-        <View>
-          <Image
-            source={item.image}
-            resizeMode="cover"
-            style={{
-              width: 50,
-              height: 50,
-              marginTop: 5,
-            }}
-          />
-        </View>
-        <Text style={{color: COLORS.white, paddingTop: 5}}>{item.title}</Text>
       </View>
     );
   };
@@ -120,49 +94,68 @@ const Search = () => {
       <View
         style={{
           marginHorizontal: SIZES.body3,
+          paddingBottom: showSearchHistory ? 5 : 0,
         }}>
-        <Text
-          style={{
-            fontSize: SIZES.h3,
-            color: COLORS.tertiary,
-            fontFamily: 'Roboto-Medium',
-            marginBottom: 5,
-          }}>
-          Search History
-        </Text>
-        {/* <CustomInput
-          label={'Search'}
-          text={'0990909'}
-          onChangeText={() => {}}
-          keyboardType={'default'}
-          secureTextEntry={false}
-          placeHolder={'Search.'}
-        /> */}
         <View
           style={{
-            flexWrap: 'wrap',
             flexDirection: 'row',
+            justifyContent: 'space-between',
           }}>
-          {searchHistoryItems.map((item, idx) => (
-            <View
-              key={idx}
+          <Text
+            style={{
+              fontSize: SIZES.h3,
+              color: COLORS.tertiary,
+              fontFamily: 'Roboto-Medium',
+              marginBottom: showSearchHistory ? 5 : 0,
+            }}>
+            Search History
+          </Text>
+          <TouchableOpacity>
+            <Text
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                backgroundColor: COLORS.white,
-                marginRight: SIZES.base,
-                padding: SIZES.base - 2,
-                borderRadius: SIZES.body1,
-                paddingHorizontal: SIZES.base + 4,
-                marginVertical: SIZES.base,
-              }}>
-              <Text style={{marginRight: SIZES.base, color: COLORS.tertiary}}>
-                {item}
-              </Text>
-              <Icon name={'close'} size={15} color={COLORS.gray} />
-            </View>
-          ))}
+                fontSize: SIZES.body4,
+                color: COLORS.secondary,
+              }}
+              onPress={() => setShowSearchHistory(!showSearchHistory)}>
+              {showSearchHistory ? 'Hide' : 'Show'}
+            </Text>
+          </TouchableOpacity>
         </View>
+
+        {showSearchHistory && (
+          <View
+            style={{
+              flexWrap: 'wrap',
+              flexDirection: 'row',
+            }}>
+            {searchHistoryItems.map((item, idx) => (
+              <View
+                key={idx}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  backgroundColor: COLORS.white,
+                  marginRight: SIZES.base,
+                  padding: SIZES.base - 2,
+                  borderRadius: SIZES.body1,
+                  paddingHorizontal: SIZES.base + 4,
+                  marginVertical: SIZES.base,
+                  ...styles.shadow,
+                }}>
+                <Text
+                  style={{
+                    marginRight: SIZES.base,
+                    color: COLORS.tertiary,
+                  }}>
+                  {item}
+                </Text>
+                <TouchableOpacity>
+                  <Icon name={'close'} size={15} color={COLORS.black} />
+                </TouchableOpacity>
+              </View>
+            ))}
+          </View>
+        )}
       </View>
     );
   };
@@ -185,15 +178,30 @@ const Search = () => {
           </Text>
         </View>
 
-        <SafeAreaView>
-          <FlatList
-            data={dummyData.bestSeller}
-            renderItem={renderBestSellerItem}
-            //Setting the number of column
-            numColumns={2}
-            keyExtractor={(item, index) => item.id}
-          />
-        </SafeAreaView>
+        <ScrollView>
+          <SafeAreaView style={{flex: 1}}>
+            <FlatList
+              data={dummyData.bestSeller}
+              renderItem={renderBestSellerItem}
+              //Setting the number of column
+              numColumns={2}
+              keyExtractor={(item, index) => item.id}
+            />
+          </SafeAreaView>
+        </ScrollView>
+      </View>
+    );
+  };
+
+  const renderSearchBar = () => {
+    return (
+      <View style={{marginTop: 5, marginBottom: showSearchHistory ? 15 : 10}}>
+        <SearchBar
+          clicked={true}
+          searchPhrase={''}
+          setSearchPhrase={() => {}}
+          setCLicked={() => {}}
+        />
       </View>
     );
   };
@@ -201,9 +209,9 @@ const Search = () => {
   return (
     <View style={styles.container}>
       {renderGreeting()}
-      {/* {!isKeyBoardOpen && <View>{renderSearchHistory()}</View>} */}
-      {renderSearchHistory()}
-      <ScrollView>{renderBestSeller()}</ScrollView>
+      {renderSearchBar()}
+      {!isKeyBoardOpen && <View>{renderSearchHistory()}</View>}
+      {renderBestSeller()}
     </View>
   );
 };
@@ -221,7 +229,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
-    elevation: 5,
+    elevation: 2,
   },
 });
 

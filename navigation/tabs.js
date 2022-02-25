@@ -50,7 +50,7 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Portfolio"
+        name="Search"
         component={Search}
         options={{
           tabBarIcon: ({focused}) => (
@@ -73,7 +73,7 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="Prices"
+        name="Cart"
         component={Cart}
         options={{
           tabBarIcon: ({focused}) => (
@@ -99,7 +99,7 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name="Profile"
         component={Profile}
         options={{
           tabBarIcon: ({focused}) => (
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
 
-    elevation: 5,
+    elevation: 30,
   },
 });
 

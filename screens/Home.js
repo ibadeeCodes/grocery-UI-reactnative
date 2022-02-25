@@ -31,7 +31,7 @@ const Home = () => {
             fontSize: SIZES.h2,
             color: COLORS.tertiary,
             fontFamily: 'Roboto-Bold',
-            marginLeft: SIZES.base - 3,
+            marginLeft: SIZES.base,
           }}>
           Hello, John
         </Text>
@@ -56,7 +56,8 @@ const Home = () => {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+          blurRadius={4}>
           <Text
             style={{
               color: COLORS.white,
@@ -119,7 +120,7 @@ const Home = () => {
                 fontWeight: 'bold',
                 color: COLORS.tertiary,
               }}>
-              Gulshan Block 16 near Disco bakery
+              Jl. Otto Iskander Dinata No. 69 east
             </Text>
           </View>
         </View>
@@ -185,23 +186,25 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View style={{marginVertical: SIZES.base}}>
-          <FlatList
-            horizontal={true}
-            data={dummyData.categories}
-            renderItem={renderCategoryItem}
-            ItemSeparatorComponent={() => {
-              return (
-                <View
-                  style={{
-                    height: '100%',
-                    width: 10,
-                  }}
-                />
-              );
-            }}
-            keyExtractor={(item, index) => item.id}
-            showsHorizontalScrollIndicator={false}
-          />
+          <SafeAreaView style={{flex: 1}}>
+            <FlatList
+              horizontal={true}
+              data={dummyData.categories}
+              renderItem={renderCategoryItem}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: '100%',
+                      width: 10,
+                    }}
+                  />
+                );
+              }}
+              keyExtractor={(item, index) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </SafeAreaView>
         </View>
       </View>
     );
@@ -260,7 +263,7 @@ const Home = () => {
           </Text>
         </View>
 
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
           <FlatList
             data={dummyData.bestSeller}
             renderItem={renderBestSellerItem}

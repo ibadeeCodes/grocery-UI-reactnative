@@ -11,7 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import {COLORS, dummyData, FONTS, images, SIZES} from '../constants';
 
-const Cart = () => {
+const Product = () => {
   const categoryItem = ({item}) => {
     return (
       <View
@@ -231,4 +231,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Cart;
+export default Product;

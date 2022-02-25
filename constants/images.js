@@ -10,6 +10,7 @@ const avatar = require('../assets/images/avatar.jpg');
 const profileBg = require('../assets/images/profile-background.jpg');
 const wavingHand = require('../assets/images/waving-hand.png');
 const shoppingCart = require('../assets/images/shopping-cart.png');
+const search = require('../assets/images/search.png');
 
 export default {
   banner,
@@ -24,4 +25,5 @@ export default {
   profileBg,
   wavingHand,
   shoppingCart,
+  search,
 };
