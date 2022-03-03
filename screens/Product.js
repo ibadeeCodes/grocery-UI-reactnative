@@ -4,163 +4,197 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView,
   Image,
   FlatList,
+  ImageBackground,
+  ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {COLORS, dummyData, FONTS, images, SIZES} from '../constants';
+import {BackButton} from '../components/index';
 
 const Product = () => {
-  const categoryItem = ({item}) => {
+  const weights = [
+    '100 g',
+    '500 g',
+    '1 kg',
+    '1.5 kg',
+    '2 kg',
+    '3 kg',
+    '4 kg',
+    '5 kg',
+    '10 kg',
+  ];
+
+  const renderProdImg = () => {
     return (
       <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginVertical: SIZES.base,
-          backgroundColor: COLORS.white,
-          padding: SIZES.base,
-          borderRadius: SIZES.base - 4,
-          marginHorizontal: SIZES.base - 4,
+          height: 250,
+          marginHorizontal: SIZES.body3,
+          marginTop: SIZES.h2 - 4,
+          borderRadius: SIZES.base,
+          overflow: 'hidden',
           ...styles.shadow,
         }}>
-        <View style={{height: 100}}>
-          <Image
-            source={item.image}
-            style={{width: 100, height: '100%', borderRadius: SIZES.base - 2}}
-          />
-        </View>
-        <View style={{paddingLeft: SIZES.base + 5}}>
-          <Text
-            style={{
-              color: COLORS.tertiary,
-              fontSize: SIZES.h3,
-              fontFamily: 'Roboto-Light',
-            }}>
-            {item.name}
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'baseline',
-              marginVertical: SIZES.base - 2,
-            }}>
-            <Text
-              style={{
-                fontSize: SIZES.h2,
-                color: COLORS.tertiary,
-                fontWeight: 'bold',
-              }}>
-              {item.price}
-            </Text>
-            <Text
-              style={{
-                fontSize: SIZES.body5,
-                color: COLORS.gray,
-                marginLeft: SIZES.base - 4,
-                fontFamily: 'Roboto-Italic',
-              }}>
-              / kg
-            </Text>
-          </View>
-
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <TouchableOpacity>
-              <Icon name="minuscircleo" size={15} color={COLORS.tertiary} />
-            </TouchableOpacity>
-            <Text style={{marginHorizontal: SIZES.base - 2}}>
-              {item.weight}
-            </Text>
-            <TouchableOpacity>
-              <Icon name="pluscircleo" size={15} color={COLORS.tertiary} />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ImageBackground
+          source={require('../assets/images/bestseller/apple.jpg')}
+          style={{
+            flex: 1,
+            alignItems: 'flex-start',
+            padding: SIZES.base,
+          }}>
+          <BackButton />
+        </ImageBackground>
       </View>
     );
   };
 
-  const renderCartItems = () => {
+  const renderWeights = () => {
+    return (
+      <View style={{marginVertical: SIZES.base}}>
+        <Text
+          style={{
+            color: COLORS.black,
+            paddingBottom: SIZES.base,
+            fontWeight: 'bold',
+          }}>
+          Select Weight
+        </Text>
+        <SafeAreaView style={{flex: 1}}>
+          <FlatList
+            horizontal={true}
+            data={weights}
+            renderItem={({item}) => (
+              <View
+                style={{
+                  padding: SIZES.base,
+                  borderColor: COLORS.secondary,
+                  borderWidth: 2,
+                  borderRadius: 5,
+                }}>
+                <Text
+                  style={{
+                    color: COLORS.gray,
+                  }}>
+                  {item}
+                </Text>
+              </View>
+            )}
+            ItemSeparatorComponent={() => {
+              return (
+                <View
+                  style={{
+                    height: '100%',
+                    width: 10,
+                  }}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => item.id}
+            showsHorizontalScrollIndicator={false}
+          />
+        </SafeAreaView>
+      </View>
+    );
+  };
+
+  const prodCategory = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          marginVertical: SIZES.h4,
+          alignItems: 'center',
+          backgroundColor: '#ccc',
+          justifyContent: 'space-around',
+          width: '25%',
+          padding: SIZES.base,
+          borderRadius: 50,
+          backgroundColor: '#ffe0b2',
+        }}>
+        <Image
+          source={require('../assets/images/categories/fruits.png')}
+          style={{
+            width: 20,
+            height: 20,
+          }}
+        />
+        <Text style={{color: COLORS.tertiary}}>Fruit</Text>
+      </View>
+    );
+  };
+
+  const renderProdDesc = () => {
     return (
       <View
         style={{
           marginHorizontal: SIZES.body3,
+          marginTop: SIZES.h2,
+          marginBottom: 80,
+          borderRadius: SIZES.base,
+          padding: SIZES.h3,
+          backgroundColor: COLORS.white,
+          ...styles.shadow,
         }}>
         <View
           style={{
-            paddingVertical: SIZES.base + 4,
             flexDirection: 'row',
-            alignItems: 'center',
+            justifyContent: 'space-between',
           }}>
-          <Image source={images.shoppingCart} style={{height: 30, width: 30}} />
+          <Text style={{fontWeight: 'bold', color: COLORS.black}}>
+            Red Apple
+          </Text>
+          <Icon name="heart" size={20} color={COLORS.red} />
+        </View>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            color: COLORS.black,
+            fontSize: SIZES.h2,
+          }}>
+          $ 45.75{' '}
           <Text
             style={{
-              fontSize: SIZES.h2,
-              color: COLORS.tertiary,
-              fontFamily: 'Roboto-Bold',
-              marginLeft: SIZES.base - 3,
+              color: COLORS.gray,
+              fontSize: SIZES.body5,
             }}>
-            Cart
+            / kg
           </Text>
-        </View>
-
-        <View>
-          <FlatList
-            data={dummyData.cartItemData}
-            renderItem={categoryItem}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-          />
+        </Text>
+        {prodCategory()}
+        {renderWeights()}
+        <View style={{marginTop: SIZES.base}}>
+          <Text
+            style={{
+              color: COLORS.black,
+              paddingBottom: SIZES.base,
+              fontWeight: 'bold',
+            }}>
+            Product Description
+          </Text>
+          <Text>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply
+            dummy text of the printing and typesetting industry. Lorem Ipsum has
+            been the industry's.
+          </Text>
         </View>
       </View>
     );
   };
 
-  const renderCouponBox = () => (
-    <TouchableOpacity
-      style={{
-        flexDirection: 'row',
-        backgroundColor: COLORS.white,
-        padding: SIZES.body4,
-        alignItems: 'center',
-        borderRadius: SIZES.base - 4,
-        borderRadius: SIZES.base - 2,
-        justifyContent: 'space-between',
-        ...styles.shadow,
-      }}>
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-        }}>
-        <Icon name="tago" size={20} color={COLORS.tertiary} />
-        <Text
-          style={{
-            marginLeft: SIZES.body5 - 2,
-            color: COLORS.tertiary,
-            fontWeight: 'bold',
-          }}>
-          Have a coupon?
-        </Text>
-      </View>
-      <TouchableOpacity>
-        <Text
-          style={{
-            fontSize: SIZES.body4,
-            color: COLORS.secondary,
-            fontWeight: 'bold',
-            textDecorationLine: 'underline',
-          }}>
-          See all
-        </Text>
-      </TouchableOpacity>
-    </TouchableOpacity>
-  );
-
   const renderTotalBill = () => {
     return (
-      <TouchableOpacity
+      <View
         style={{
           position: 'absolute',
           bottom: 50,
@@ -198,18 +232,20 @@ const Product = () => {
               padding: SIZES.body4,
               borderRadius: SIZES.base - 2,
             }}>
-            Buy Now
+            Pay Now
           </Text>
         </TouchableOpacity>
-      </TouchableOpacity>
+      </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      {renderCartItems()}
-      {renderTotalBill()}
-      <View>{renderCouponBox()}</View>
+      <ScrollView>
+        {renderProdImg()}
+        {renderProdDesc()}
+        {/* {renderTotalBill()} */}
+      </ScrollView>
     </View>
   );
 };

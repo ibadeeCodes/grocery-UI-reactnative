@@ -4,12 +4,11 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView,
   Image,
   FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {COLORS, dummyData, FONTS, images, SIZES} from '../constants';
+import {COLORS, dummyData, images, SIZES} from '../constants';
 
 const Cart = () => {
   const categoryItem = ({item}) => {
@@ -160,7 +159,7 @@ const Cart = () => {
 
   const renderTotalBill = () => {
     return (
-      <TouchableOpacity
+      <View
         style={{
           position: 'absolute',
           bottom: 50,
@@ -198,10 +197,10 @@ const Cart = () => {
               padding: SIZES.body4,
               borderRadius: SIZES.base - 2,
             }}>
-            Buy Now
+            Pay Now
           </Text>
         </TouchableOpacity>
-      </TouchableOpacity>
+      </View>
     );
   };
 

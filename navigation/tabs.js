@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Home, Profile, Cart, Search} from '../screens';
+import {Home, Profile, Cart, Search, Product} from '../screens';
 import {COLORS, FONTS} from '../constants';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -30,6 +30,7 @@ const Tabs = () => {
       <Tab.Screen
         name="Home"
         component={Home}
+        // component={Product}
         options={{
           tabBarIcon: ({focused}) => (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
