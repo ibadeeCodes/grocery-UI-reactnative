@@ -231,8 +231,7 @@ const Home = ({navigation}) => {
               backgroundColor: 'rgba(52, 52, 52, 0.6)',
               marginTop: 'auto',
               padding: SIZES.base,
-            }}
-            onPress={() => navigation.navigate('Product')}>
+            }}>
             <Text
               style={{
                 color: COLORS.white,
