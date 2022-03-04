@@ -16,15 +16,15 @@ import {BackButton} from '../components/index';
 
 const Product = () => {
   const weights = [
-    '100 g',
-    '500 g',
-    '1 kg',
-    '1.5 kg',
-    '2 kg',
-    '3 kg',
-    '4 kg',
-    '5 kg',
-    '10 kg',
+    {id: 1, w: '100 g'},
+    {id: 2, w: '500 g'},
+    {id: 3, w: '1 kg'},
+    {id: 4, w: '1.5 kg'},
+    {id: 5, w: '2 kg'},
+    {id: 6, w: '3 kg'},
+    {id: 7, w: '4 kg'},
+    {id: 8, w: '5 kg'},
+    {id: 9, w: '10 kg'},
   ];
 
   const renderProdImg = () => {
@@ -78,7 +78,7 @@ const Product = () => {
                   style={{
                     color: COLORS.gray,
                   }}>
-                  {item}
+                  {item.w}
                 </Text>
               </View>
             )}

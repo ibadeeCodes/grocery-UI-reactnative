@@ -8,14 +8,12 @@ import {
   ImageBackground,
   Image,
   FlatList,
-  LogBox,
-  Button,
   SafeAreaView,
 } from 'react-native';
 import {COLORS, dummyData, FONTS, icons, images, SIZES} from '../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const renderGreeting = () => {
     return (
       <View
@@ -33,7 +31,7 @@ const Home = () => {
             fontFamily: 'Roboto-Bold',
             marginLeft: SIZES.base,
           }}>
-          Hello, John
+          Hi, Ibad
         </Text>
       </View>
     );
@@ -212,36 +210,41 @@ const Home = () => {
 
   const renderBestSellerItem = ({item, index}) => {
     return (
-      <ImageBackground
-        source={item.image}
-        resizeMode="cover"
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          height: SIZES.height / 3.5,
-          borderRadius: SIZES.base,
-          overflow: 'hidden',
-          marginLeft: (index + 1) % 2 == 1 ? 0 : 4,
-          marginRight: (index + 1) % 2 == 0 ? 0 : 4,
-          marginVertical: SIZES.base - 4,
-        }}>
-        <View
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Product')}
+        style={{flex: 1}}>
+        <ImageBackground
+          source={item.image}
+          resizeMode="cover"
           style={{
-            backgroundColor: 'rgba(52, 52, 52, 0.6)',
-            marginTop: 'auto',
-            padding: SIZES.base,
+            flex: 1,
+            flexDirection: 'column',
+            height: SIZES.height / 3.5,
+            borderRadius: SIZES.base,
+            overflow: 'hidden',
+            marginLeft: (index + 1) % 2 == 1 ? 0 : 4,
+            marginRight: (index + 1) % 2 == 0 ? 0 : 4,
+            marginVertical: SIZES.base - 4,
           }}>
-          <Text
+          <View
             style={{
-              color: COLORS.white,
-              fontWeight: 'bold',
-              fontSize: SIZES.h3,
-            }}>
-            {item.name}
-          </Text>
-          <Text style={{color: COLORS.white}}>${item.price} / kg</Text>
-        </View>
-      </ImageBackground>
+              backgroundColor: 'rgba(52, 52, 52, 0.6)',
+              marginTop: 'auto',
+              padding: SIZES.base,
+            }}
+            onPress={() => navigation.navigate('Product')}>
+            <Text
+              style={{
+                color: COLORS.white,
+                fontWeight: 'bold',
+                fontSize: SIZES.h3,
+              }}>
+              {item.name}
+            </Text>
+            <Text style={{color: COLORS.white}}>${item.price} / kg</Text>
+          </View>
+        </ImageBackground>
+      </TouchableOpacity>
     );
   };
 

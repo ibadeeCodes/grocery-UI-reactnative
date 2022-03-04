@@ -1,12 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import {Home, Profile, Cart, Search, Product} from '../screens';
 import {COLORS, FONTS} from '../constants';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const Tab = createBottomTabNavigator();
+
+const Stack = createStackNavigator();
+
+function ProductStack() {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Product" component={Product} />
+    </Stack.Navigator>
+  );
+}
 
 const Tabs = () => {
   return (
@@ -29,7 +41,7 @@ const Tabs = () => {
       }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={ProductStack}
         // component={Product}
         options={{
           tabBarIcon: ({focused}) => (
